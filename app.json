@@ -2,18 +2,29 @@
   "id": "net.pelliniscreenline",
   "sdk": 2,
   "name": {
-    "en": "ScreenLine Remote"
+    "en": "ScreenLine Remote",
+    "nl": "ScreenLine Afstandsbediening"
   },
   "description": {
-    "en": "Add support for ScreenLine Blinds"
+    "en": "Add support for ScreenLine Remote Control Blinds",
+    "nl": "voeg ondersteuning voor ScreenLine Afstandsbediening toe"
   },
   "category": "climate",
   "version": "0.0.1",
   "compatibility": ">=1.5.0",
   "author": {
     "name": "Geurt Dijker",
-    "email": "geurt@dijker.nu"
   },
+  "contributing": {
+    "donate": {
+        "paypal": {
+            "username": "Dijker"
+        }
+    }
+},
+"bugs": {
+    "url": "https://github.com/Dijker/net.PelliniScreenLine/issues"
+},
   "signals": {
     "433": {
       "screenline": {
