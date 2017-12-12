@@ -15,8 +15,99 @@
     "email": "geurt@dijker.nu"
   },
   "signals": {
-    "433": {}
+    "433": {
+      "screenline": {
+        "sof": [
+          1012,
+          481,
+          328,
+          471,
+          338,
+          465,
+          343,
+          460,
+          348,
+          455,
+          353,
+          451,
+          356,
+          448,
+          361,
+          444,
+          361,
+          444,
+          361,
+          444,
+          362,
+          443,
+          363,
+          4467
+        ],
+        "eof": [
+          359,
+          2784
+        ],
+        "words": [
+          [
+            398,
+            808
+          ],
+          [
+            768,
+            440
+          ]
+        ],
+        "interval": 10000,
+        "repetitions": 20,
+        "sensitivity": 0.5,
+        "minimalLength": 48,
+        "maximalLength": 48
+      }
+    }
   },
   "flow": {},
-  "drivers": []
+  "drivers": [
+    {
+      "id": "SL2392S159",
+      "name": {
+        "en": "ScreenLine Remote",
+        "nl": "ScreenLine Afstandsbediening"
+      },
+      "icon": "",
+      "class": "windowcoverings",
+      "capabilities": [
+        "windowcoverings_state"
+      ],
+      "images": {
+        "large": "./drivers/SL2392S159/assets/images/large.png",
+        "small": "./drivers/SL2392S159/assets/images/small.png"
+      },
+      "rf": {
+        "signal": "screenline"
+      },
+      "settings": [],
+      "pair": [
+        {
+          "id": "imitate",
+          "rf_template": "imitate",
+          "navigation": {}
+        },
+        {
+          "id": "test_switch",
+          "rf_template": "test_switch",
+          "navigation": {
+            "prev": "imitate",
+            "next": "done"
+          }
+        },
+        {
+          "id": "done",
+          "rf_template": "done"
+        }
+      ]
+    }
+  ],
+  "permissions": [
+    "homey:wireless:433"
+  ]
 }
