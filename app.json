@@ -21,14 +21,14 @@
             "username": "Dijker"
         }
     }
-},
-"bugs": {
-    "url": "https://github.com/Dijker/net.PelliniScreenLine/issues"
-},
-"images": {
-    "large": "/assets/images/large.png",
-    "small": "/assets/images/small.png"
-},
+  },
+  "bugs": {
+      "url": "https://github.com/Dijker/net.PelliniScreenLine/issues"
+  },
+  "images": {
+      "large": "/assets/images/large.png",
+      "small": "/assets/images/small.png"
+  },
   "signals": {
     "433": {
       "screenline": {
