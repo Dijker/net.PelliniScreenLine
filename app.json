@@ -1,17 +1,22 @@
 {
-    "id": "net.PelliniScreenLine",
-    "sdk": 2,
-    "name": {
-        "en": "ScreenLine Remote"
-    },
-    "description": {
-        "en": "Add support for ScreenLine Blinds"
-    },
-    "category": "climate",
-    "version": "0.0.1",
-    "compatibility": ">=1.5.0",
-    "author": {
-        "name": "Geurt Dijker",
-        "email": "geurt@dijker.nu"
-    }
+  "id": "net.PelliniScreenLine",
+  "sdk": 2,
+  "name": {
+    "en": "ScreenLine Remote"
+  },
+  "description": {
+    "en": "Add support for ScreenLine Blinds"
+  },
+  "category": "climate",
+  "version": "0.0.1",
+  "compatibility": ">=1.5.0",
+  "author": {
+    "name": "Geurt Dijker",
+    "email": "geurt@dijker.nu"
+  },
+  "signals": {
+    "433": {}
+  },
+  "flow": {},
+  "drivers": []
 }
