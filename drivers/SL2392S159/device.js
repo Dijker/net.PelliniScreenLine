@@ -7,10 +7,10 @@ const util = require('homey-rfdriver').util;
 const numberToCmdString = cmd => cmd.toString(2).padStart(4, '0');
 // The commands mapped to the corresponding bitString
 const commandMap = new Map([
-	['up', numberToCmdString(0x7)],
+	['up', numberToCmdString(0x7)], // 0111
 	// idle Does not Exitst for ScreenLine !!!
   ['idle', numberToCmdString(0x2)],
-	['down', numberToCmdString(0xd)],
+	['down', numberToCmdString(0xd)], // 1101
 ]);
 // The bitStrings mapped to the corresponding command
 const stateMap = new Map(Array.from(commandMap.entries()).map(entry => {
@@ -27,7 +27,8 @@ module.exports = RFDriver => class SL2392S159 extends RFDriver {
       channel: util.bitArrayToString(payload.slice(0, 11)),
       group: payload.slice(0, 11).indexOf(1) === -1,
       // state: payload[11],
-      cmd: stateMap.get(util.bitArrayToString(payload.slice(11, 15)))
+      cmd: stateMap.get(util.bitArrayToString(payload.slice(11, 15))),
+			payload: util.bitArrayToString(payload) // Temp Debug
     };
     // If the command corresponds to a windowcoverings_state capability value set the value to data.windowcoverings_state
     // RFDriver will automatically call this.setCapabilityValue('windowcoverings_state', data.windowcoverings_state);
@@ -43,19 +44,17 @@ module.exports = RFDriver => class SL2392S159 extends RFDriver {
     // Set data.id to a unique value for this device. Since a remote has an address and 5 channels and each
     // channel can contain a different blind
     data.id = `${data.address}:${data.channel}`;
-    console.log(JSON.stringify(data));
+    // console.log(JSON.stringify(data));
     return data;
   }
 
   // for the screenline by Geurt Dijker
   static dataToPayload(data) { // Convert a data object to a bit array to be send
-		console.log('dataToPayload: ');
-		console.log(JSON.stringify(data));
-		console.log(data.address.length);
+		// console.log('dataToPayload: '); console.log(JSON.stringify(data)); console.log(data.address.length);
 
     if ( data && data.address.length === 31 ) {
       const command = commandMap.get(data.command || data.windowcoverings_state);
-			console.log( command );
+			// console.log( command );
 			if (command) {
         const address = util.bitStringToBitArray(data.address);
         const channel = util.bitStringToBitArray(data.channel);
@@ -66,7 +65,7 @@ module.exports = RFDriver => class SL2392S159 extends RFDriver {
                   address.slice(18,29),		// 11
                   command.slice(0,1),			// 1
                   address.slice(29,31))		// 2
-                  // [0,1]);						// 2
+                  // [0,1]);						  // 2
       }
     }
     return null;

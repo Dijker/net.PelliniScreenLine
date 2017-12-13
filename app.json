@@ -10,7 +10,7 @@
     "nl": "voeg ondersteuning voor ScreenLine Afstandsbediening toe"
   },
   "category": "climate",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "compatibility": ">=1.5.0",
   "author": {
     "name": "Geurt Dijker"
@@ -88,7 +88,7 @@
         "en": "ScreenLine Remote",
         "nl": "ScreenLine Afstandsbediening"
       },
-      "icon": "",
+      "icon": "./drivers/SL2392S159/assets/blinds.svg",
       "class": "windowcoverings",
       "capabilities": [
         "windowcoverings_state"
