@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 21.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 144.1 449.8" style="enable-background:new 0 0 144.1 449.8;" xml:space="preserve">
+	 viewBox="0 0 144.1 449.8" style="enable-background:new 0 0 144.1 449.8;" xml:space="preserve" xmlns:pulse="-">
 <style type="text/css">
 	.st0{fill:#010101;}
 </style>
@@ -92,12 +92,12 @@
 <g>
 	<path class="st0" d="M120,131.1H26.5V55.6H120V131.1z M28.5,129.1H118V57.6H28.5V129.1z"/>
 </g>
-<g>
-	<path class="st0" d="M93.6,219.3H50.9c-5.2,0-9.5-4.3-9.5-9.5s4.3-9.5,9.5-9.5h42.7c5.2,0,9.5,4.3,9.5,9.5S98.8,219.3,93.6,219.3z
+<g pulse:initial="true" pulse:cmd="up">
+	<path d="M93.6,219.3H50.9c-5.2,0-9.5-4.3-9.5-9.5s4.3-9.5,9.5-9.5h42.7c5.2,0,9.5,4.3,9.5,9.5S98.8,219.3,93.6,219.3z
 		 M50.9,201.8c-4.4,0-8,3.6-8,8s3.6,8,8,8h42.7c4.4,0,8-3.6,8-8s-3.6-8-8-8H50.9z"/>
 </g>
-<g>
-	<path class="st0" d="M93.6,274.4H50.9c-5.2,0-9.5-4.3-9.5-9.5s4.3-9.5,9.5-9.5h42.7c5.2,0,9.5,4.3,9.5,9.5S98.8,274.4,93.6,274.4z
+<g pulse:cmd="down">
+	<path d="M93.6,274.4H50.9c-5.2,0-9.5-4.3-9.5-9.5s4.3-9.5,9.5-9.5h42.7c5.2,0,9.5,4.3,9.5,9.5S98.8,274.4,93.6,274.4z
 		 M50.9,256.9c-4.4,0-8,3.6-8,8s3.6,8,8,8h42.7c4.4,0,8-3.6,8-8s-3.6-8-8-8H50.9z"/>
 </g>
 <g>
