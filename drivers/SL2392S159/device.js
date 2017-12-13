@@ -6,7 +6,6 @@ const util = require('homey-rfdriver').util;
 // Helper function to turn a number into a bitString of 4 long
 const numberToCmdString = cmd => cmd.toString(2).padStart(4, '0');
 // The commands mapped to the corresponding bitString
-// Cmd id's are replaced with placeholders
 const commandMap = new Map([
 	['up', numberToCmdString(0x7)],
 	// idle Does not Exitst for ScreenLine !!!
@@ -32,9 +31,15 @@ module.exports = RFDriver => class SL2392S159 extends RFDriver {
     };
     // If the command corresponds to a windowcoverings_state capability value set the value to data.windowcoverings_state
     // RFDriver will automatically call this.setCapabilityValue('windowcoverings_state', data.windowcoverings_state);
-    if (data.cmd === 'idle' || data.cmd === 'up' || data.cmd === 'down') {
-      data.windowcoverings_state = data.cmd;
-    }
+	  if (data.cmd === 'up' || data.cmd === 'down') {
+	  	// This data property is used by the test windowcovering pair view to animate the blinds going up/down
+	  	data.direction = data.cmd;
+		  data.windowcoverings_state = data.cmd;
+	  } else if (data.cmd === 'idle') {
+		  data.windowcoverings_state = data.cmd;
+	  }
+
+
     // Set data.id to a unique value for this device. Since a remote has an address and 5 channels and each
     // channel can contain a different blind
     data.id = `${data.address}:${data.channel}`;
