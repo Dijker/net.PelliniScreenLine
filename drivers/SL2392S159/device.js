@@ -23,8 +23,10 @@ module.exports = RFDriver => class SL2392S159 extends RFDriver {
   // for the screenline by Geurt Dijker
   static payloadToData(payload) { // Convert received data to usable variables
     const data = {
-      address: util.bitArrayToString(payload.slice(15, 33).concat(payload.slice(34,45),payload.slice(46,48))),
-      channel: util.bitArrayToString(payload.slice(0, 11)),
+      address: util.bitArrayToString(payload.slice(15, 33)),
+			code: util.bitArrayToString(payload.slice(34,45)),
+			eof:  util.bitArrayToString(payload.slice(46,48)),
+      channel: parseInt( util.bitArrayToString(payload.slice(0, 11).reverse()),2),
       group: payload.slice(0, 11).indexOf(1) === -1,
       // state: payload[11],
       cmd: stateMap.get(util.bitArrayToString(payload.slice(11, 15))),
@@ -48,27 +50,30 @@ module.exports = RFDriver => class SL2392S159 extends RFDriver {
     // Set data.id to a unique value for this device. Since a remote has an address and 5 channels and each
     // channel can contain a different blind
     data.id = `${data.address}:${data.channel}`;
-    console.log(data.cmd, data.cmdbit33, data.cmdbit45);
+    console.log(data.channel, data.cmd, data.cmdbit33, data.cmdbit45);
     return data;
   }
 
   // for the screenline by Geurt Dijker
   static dataToPayload(data) { // Convert a data object to a bit array to be send
 		// console.log('dataToPayload: '); console.log(JSON.stringify(data)); console.log(data.address.length);
-
-    if ( data && data.address.length === 31 ) {
+		console.log(data.address.length );
+    if ( data && data.address.length === 18 ) {
       const command = commandMap.get(data.command || data.windowcoverings_state);
 			// console.log( command );
 			if (command) {
         const address = util.bitStringToBitArray(data.address);
-        const channel = util.bitStringToBitArray(data.channel);
+				const channel = ("00000000000"+(+data.channel).toString(2)).slice(-11).split('').reverse();
+        // const channel = util.bitStringToBitArray(data.channel);
+				const code = util.bitStringToBitArray(data.code);
+				const eof = util.bitStringToBitArray(data.eof);
         // const state = data.state === 1 ? [1, 1, 0, 1] : [0, 1, 1, 1];
         return channel.concat(command.split('').map(Number),						// 11 + 4
-                  address.slice(0,18), 		// 19
+                  address, 		// 19
 									command[data.cmdbit33],			// 1
-                  address.slice(18,29),		// 11
+                  code,		// 11
                   command[data.cmdbit45],			// 1
-                  address.slice(29,31))		// 2
+                  eof)		// 2
                   // [0,1]);						  // 2
       }
     }
