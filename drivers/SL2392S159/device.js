@@ -28,8 +28,13 @@ module.exports = RFDriver => class SL2392S159 extends RFDriver {
       group: payload.slice(0, 11).indexOf(1) === -1,
       // state: payload[11],
       cmd: stateMap.get(util.bitArrayToString(payload.slice(11, 15))),
+			cmdbit33: util.bitArrayToString(payload.slice(11, 15)).indexOf(payload[33]+'1'),
+			cmdbit45: util.bitArrayToString(payload.slice(11, 15)).indexOf(payload[45]+'1'),
 			payload: util.bitArrayToString(payload) // Temp Debug
     };
+		if (data.cmdbit33 == '1') {data.cmdbit33 = 2};
+		if (data.cmdbit45 == '1') {data.cmdbit45 = 2};
+
     // If the command corresponds to a windowcoverings_state capability value set the value to data.windowcoverings_state
     // RFDriver will automatically call this.setCapabilityValue('windowcoverings_state', data.windowcoverings_state);
 	  if (data.cmd === 'up' || data.cmd === 'down') {
@@ -40,11 +45,10 @@ module.exports = RFDriver => class SL2392S159 extends RFDriver {
 		  data.windowcoverings_state = data.cmd;
 	  }
 
-
     // Set data.id to a unique value for this device. Since a remote has an address and 5 channels and each
     // channel can contain a different blind
     data.id = `${data.address}:${data.channel}`;
-    // console.log(JSON.stringify(data));
+    console.log(data.cmd, data.cmdbit33, data.cmdbit45);
     return data;
   }
 
@@ -61,9 +65,9 @@ module.exports = RFDriver => class SL2392S159 extends RFDriver {
         // const state = data.state === 1 ? [1, 1, 0, 1] : [0, 1, 1, 1];
         return channel.concat(command.split('').map(Number),						// 11 + 4
                   address.slice(0,18), 		// 19
-                  command.slice(2,3),			// 1
+									command[data.cmdbit33],			// 1
                   address.slice(18,29),		// 11
-                  command.slice(0,1),			// 1
+                  command[data.cmdbit45],			// 1
                   address.slice(29,31))		// 2
                   // [0,1]);						  // 2
       }
