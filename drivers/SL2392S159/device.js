@@ -32,7 +32,7 @@ module.exports = RFDriver => class SL2392S159 extends RFDriver {
       cmd: stateMap.get(util.bitArrayToString(payload.slice(11, 15))),
 			cmdbit33: util.bitArrayToString(payload.slice(11, 15)).indexOf(payload[33]+'1'),
 			cmdbit45: util.bitArrayToString(payload.slice(11, 15)).indexOf(payload[45]+'1'),
-			payload: util.bitArrayToString(payload) // Temp Debug
+			// payload: util.bitArrayToString(payload) // Temp Debug
     };
 		if (data.cmdbit33 == '1') {data.cmdbit33 = 2};
 		if (data.cmdbit45 == '1') {data.cmdbit45 = 2};
@@ -47,20 +47,20 @@ module.exports = RFDriver => class SL2392S159 extends RFDriver {
 		  data.windowcoverings_state = data.cmd;
 	  }
 
-    // Set data.id to a unique value for this device. Since a remote has an address and 5 channels and each
+    // Set data.id to a unique value for this device. Since a remote has an address and multiple channels and each
     // channel can contain a different blind
     data.id = `${data.address}:${data.channel}`;
-    console.log(data.channel, data.cmd, data.cmdbit33, data.cmdbit45);
+    // console.log(data.channel, data.cmd, data.cmdbit33, data.cmdbit45);
     return data;
   }
 
   // for the screenline by Geurt Dijker
   static dataToPayload(data) { // Convert a data object to a bit array to be send
-		// console.log('dataToPayload: '); console.log(JSON.stringify(data)); console.log(data.address.length);
-		console.log(data.address.length );
+		console.log('dataToPayload: ');
+		console.log(JSON.stringify(data));
     if ( data && data.address.length === 18 ) {
       const command = commandMap.get(data.command || data.windowcoverings_state);
-			// console.log( command );
+
 			if (command) {
         const address = util.bitStringToBitArray(data.address);
 				const channel = ("00000000000"+(+data.channel).toString(2)).slice(-11).split('').reverse();

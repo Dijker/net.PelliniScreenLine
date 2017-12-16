@@ -17,17 +17,17 @@
   },
   "contributing": {
     "donate": {
-        "paypal": {
-            "username": "Dijker"
-        }
+      "paypal": {
+        "username": "Dijker"
+      }
     }
   },
   "bugs": {
-      "url": "https://github.com/Dijker/net.PelliniScreenLine/issues"
+    "url": "https://github.com/Dijker/net.PelliniScreenLine/issues"
   },
   "images": {
-      "large": "/assets/images/large.png",
-      "small": "/assets/images/small.png"
+    "large": "/assets/images/large.png",
+    "small": "/assets/images/small.png"
   },
   "signals": {
     "433": {
@@ -91,7 +91,11 @@
       "icon": "./drivers/SL2392S159/assets/blinds.svg",
       "class": "windowcoverings",
       "capabilities": [
-        "windowcoverings_state"
+        "windowcoverings_state",
+        "dim",
+        "windowcoverings_tilt_up",
+        "windowcoverings_tilt_down",
+        "windowcoverings_tilt_set"
       ],
       "images": {
         "large": "./drivers/SL2392S159/assets/images/large.png",

@@ -6,10 +6,14 @@ module.exports = {
 		en: 'ScreenLine Remote',
 		nl: 'ScreenLine Afstandsbediening',
 	},
-	icon: '',
+	icon: './drivers/SL2392S159/assets/blinds.svg',
 	class: 'windowcoverings',
 	capabilities: [
 		'windowcoverings_state',
+		'dim',
+		'windowcoverings_tilt_up',
+		'windowcoverings_tilt_down',
+		'windowcoverings_tilt_set'
 	],
 	images: {
 		large: './drivers/SL2392S159/assets/images/large.png',
