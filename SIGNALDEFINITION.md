@@ -24,6 +24,9 @@ total.length = 11+4+18+1+11+1+2 = 48
 For My Remote1: y /Y								== u[2]/u[0] / Y =! y
 For 2nd Remote: y /Y								== u[2]/u[2] / Y == y
 
+Short pulse < ~5,5 seconds Max "repetitions": 43, @"interval": 10000,
+Long  pulse > ~5,5 seconds from "repetitions": 45, @"interval": 10000,
+
 ccccccccccc	UUUU	aaaaaaaaaaaaaaaaaa	y	bbbbbbbbbbb	Y	Static	Channel
 10111010000	1101	101111011110001110	0	11011001111	1	01	93	Down
 10111010000	0111	101111011110001110	1	11011001111	0	01	93	Up
