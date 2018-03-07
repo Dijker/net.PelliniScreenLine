@@ -2,12 +2,12 @@
   "id": "net.pelliniscreenline",
   "sdk": 2,
   "name": {
-    "en": "ScreenLine Remote",
-    "nl": "ScreenLine Afstandsbediening"
+    "en": "ScreenLine",
+    "nl": "ScreenLine"
   },
   "description": {
     "en": "Add support for ScreenLine Remote Control Blinds",
-    "nl": "voeg ondersteuning voor ScreenLine Afstandsbediening toe"
+    "nl": "Voeg ondersteuning voor ScreenLine Afstandsbediening toe"
   },
   "category": "climate",
   "version": "0.0.7",
