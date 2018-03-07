@@ -10,11 +10,7 @@
     "nl": "voeg ondersteuning voor ScreenLine Afstandsbediening toe"
   },
   "category": "climate",
-<<<<<<< HEAD
   "version": "0.0.7",
-=======
-  "version": "0.0.6",
->>>>>>> 916a32b5e555adb0df37b6408e35c888f4c34a9d
   "compatibility": ">=1.5.0",
   "author": {
     "name": "Geurt Dijker"
@@ -97,7 +93,7 @@
             {
               "name": "device",
               "type": "device",
-              "filter": "driver_id=MLE-25&capabilities=windowcoverings_tilt_up"
+              "filter": "driver_id=SL2392S159&capabilities=windowcoverings_tilt_up"
             },
             {
               "name": "direction",
@@ -145,10 +141,8 @@
       "class": "windowcoverings",
       "capabilities": [
         "windowcoverings_state",
-        "dim",
         "windowcoverings_tilt_up",
-        "windowcoverings_tilt_down",
-        "windowcoverings_tilt_set"
+        "windowcoverings_tilt_down"
       ],
       "images": {
         "large": "./drivers/SL2392S159/assets/images/large.png",
