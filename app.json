@@ -82,54 +82,54 @@
     }
   },
   "flow": {
-      "actions": [
-        {
-          "id": "tilt",
-          "title": {
-            "en": "tilt window covering",
-            "nl": "kantel raambekleding"
+    "actions": [
+      {
+        "id": "tilt",
+        "title": {
+          "en": "tilt window covering",
+          "nl": "kantel raambekleding"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=SL2392S159&capabilities=windowcoverings_tilt_up"
           },
-          "args": [
-            {
-              "name": "device",
-              "type": "device",
-              "filter": "driver_id=SL2392S159&capabilities=windowcoverings_tilt_up"
-            },
-            {
-              "name": "direction",
-              "type": "dropdown",
-              "values": [
-                {
-                  "id": "up",
-                  "label": {
-                    "en": "up",
-                    "nl": "omhoog"
-                  }
-                },
-                {
-                  "id": "down",
-                  "label": {
-                    "en": "down",
-                    "nl": "omlaag"
-                  }
+          {
+            "name": "direction",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "up",
+                "label": {
+                  "en": "up",
+                  "nl": "omhoog"
                 }
-              ]
-            },
-            {
-              "name": "steps",
-              "type": "number",
-              "min": 1,
-              "max": 40,
-              "step": 1,
-              "placeholder": {
-                "en": "Amount of steps",
-                "nl": "Aantal stappen"
+              },
+              {
+                "id": "down",
+                "label": {
+                  "en": "down",
+                  "nl": "omlaag"
+                }
               }
+            ]
+          },
+          {
+            "name": "steps",
+            "type": "number",
+            "min": 1,
+            "max": 40,
+            "step": 1,
+            "placeholder": {
+              "en": "Amount of steps",
+              "nl": "Aantal stappen"
             }
-          ]
-        }
-      ]
-    },
+          }
+        ]
+      }
+    ]
+  },
   "drivers": [
     {
       "id": "SL2392S159",
@@ -141,8 +141,10 @@
       "class": "windowcoverings",
       "capabilities": [
         "windowcoverings_state",
+        "dim",
         "windowcoverings_tilt_up",
-        "windowcoverings_tilt_down"
+        "windowcoverings_tilt_down",
+        "windowcoverings_tilt_set"
       ],
       "images": {
         "large": "./drivers/SL2392S159/assets/images/large.png",
@@ -174,54 +176,54 @@
     }
   ],
   "mobile": {
-   "components": [
-     {
-       "id": "icon"
-     },
-     {
-       "id": "button",
-       "capabilities": [
-         "windowcoverings_tilt_up"
-       ],
-       "options": {
-         "icons": {
-           "windowcoverings_tilt_up": "/assets/icons/windowcoverings_tilt_up.svg"
-         }
-       }
-     },
-     {
-       "id": "button",
-       "capabilities": [
-         "windowcoverings_tilt_down"
-       ],
-       "options": {
-         "icons": {
-           "windowcoverings_tilt_down": "/assets/icons/windowcoverings_tilt_down.svg"
-         }
-       }
-     },
-     {
-       "id": "ternary",
-       "capabilities": [
-         "windowcoverings_state"
-       ]
-     }
-   ]
- },
- "capabilitiesOptions": {
-  "windowcoverings_tilt_up": {
-    "title": {
-      "en": "Tilt up",
-      "nl": "Kantel omhoog"
+    "components": [
+      {
+        "id": "icon"
+      },
+      {
+        "id": "button",
+        "capabilities": [
+          "windowcoverings_tilt_up"
+        ],
+        "options": {
+          "icons": {
+            "windowcoverings_tilt_up": "/assets/icons/windowcoverings_tilt_up.svg"
+          }
+        }
+      },
+      {
+        "id": "button",
+        "capabilities": [
+          "windowcoverings_tilt_down"
+        ],
+        "options": {
+          "icons": {
+            "windowcoverings_tilt_down": "/assets/icons/windowcoverings_tilt_down.svg"
+          }
+        }
+      },
+      {
+        "id": "ternary",
+        "capabilities": [
+          "windowcoverings_state"
+        ]
+      }
+    ]
+  },
+  "capabilitiesOptions": {
+    "windowcoverings_tilt_up": {
+      "title": {
+        "en": "Tilt up",
+        "nl": "Kantel omhoog"
+      }
+    },
+    "windowcoverings_tilt_down": {
+      "title": {
+        "en": "Tilt down",
+        "nl": "Kantel omlaag"
+      }
     }
   },
-  "windowcoverings_tilt_down": {
-    "title": {
-      "en": "Tilt down",
-      "nl": "Kantel omlaag"
-    }
-  }
-},
   "permissions": [
     "homey:wireless:433"
   ]
