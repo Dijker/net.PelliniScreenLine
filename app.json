@@ -10,7 +10,11 @@
     "nl": "voeg ondersteuning voor ScreenLine Afstandsbediening toe"
   },
   "category": "climate",
+<<<<<<< HEAD
   "version": "0.0.7",
+=======
+  "version": "0.0.6",
+>>>>>>> 916a32b5e555adb0df37b6408e35c888f4c34a9d
   "compatibility": ">=1.5.0",
   "author": {
     "name": "Geurt Dijker"
@@ -25,6 +29,7 @@
   "bugs": {
     "url": "https://github.com/Dijker/net.PelliniScreenLine/issues"
   },
+  "athomForumDiscussionId": 4399,
   "images": {
     "large": "/assets/images/large.png",
     "small": "/assets/images/small.png"
