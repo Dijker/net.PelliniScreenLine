@@ -10,10 +10,8 @@ module.exports = {
 	class: 'windowcoverings',
 	capabilities: [
 		'windowcoverings_state',
-		'dim',
 		'windowcoverings_tilt_up',
-		'windowcoverings_tilt_down',
-		'windowcoverings_tilt_set'
+		'windowcoverings_tilt_down'
 	],
 	images: {
 		large: './drivers/SL2392S159/assets/images/large.png',
