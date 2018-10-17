@@ -1,6 +1,9 @@
 {
   "id": "net.pelliniscreenline",
+  "version": "0.0.8",
+  "compatibility": ">=1.5.0",
   "sdk": 2,
+  "brandColor": "#FF0000",
   "name": {
     "en": "ScreenLine",
     "nl": "ScreenLine"
@@ -10,8 +13,29 @@
     "nl": "Voeg ondersteuning voor ScreenLine Afstandsbediening toe"
   },
   "category": "climate",
-  "version": "0.0.7",
-  "compatibility": ">=1.5.0",
+  "tags": {
+    "en": [
+      "inBlindz",
+      "Screenline",
+      "PelliniScreenLine",
+      "ScreenLine",
+      "StolkerGlas"
+    ],
+    "nl": [
+      "inBlindz",
+      "Screenline",
+      "PelliniScreenLine",
+      "ScreenLine",
+      "StolkerGlas"
+    ]
+  },
+  "images": {
+    "large": "/assets/images/large.png",
+    "small": "/assets/images/small.png"
+  },
+  "permissions": [
+    "homey:wireless:433"
+  ],
   "author": {
     "name": "Geurt Dijker"
   },
@@ -26,61 +50,7 @@
     "url": "https://github.com/Dijker/net.PelliniScreenLine/issues"
   },
   "athomForumDiscussionId": 4399,
-  "images": {
-    "large": "/assets/images/large.png",
-    "small": "/assets/images/small.png"
-  },
-  "signals": {
-    "433": {
-      "screenline": {
-        "sof": [
-          1012,
-          481,
-          328,
-          471,
-          338,
-          465,
-          343,
-          460,
-          348,
-          455,
-          353,
-          451,
-          356,
-          448,
-          361,
-          444,
-          361,
-          444,
-          361,
-          444,
-          362,
-          443,
-          363,
-          4467
-        ],
-        "eof": [
-          359,
-          2784
-        ],
-        "words": [
-          [
-            398,
-            808
-          ],
-          [
-            768,
-            440
-          ]
-        ],
-        "interval": 10000,
-        "repetitions": 20,
-        "sensitivity": 0.5,
-        "minimalLength": 48,
-        "maximalLength": 48
-      }
-    }
-  },
+  "homeyCommunityTopicId": 313,
   "flow": {
     "actions": [
       {
@@ -132,7 +102,104 @@
   },
   "drivers": [
     {
-      "id": "SL2392S159",
+      "images": {
+        "large": "./drivers/SL2392S159/assets/images/large.png",
+        "small": "./drivers/SL2392S159/assets/images/small.png"
+      },
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "General settings",
+            "nl": "Algemene instellingen"
+          },
+          "children": [
+            {
+              "id": "rotated",
+              "type": "radio",
+              "value": "0",
+              "label": {
+                "en": "Invert up/down signal",
+                "nl": "Inverteer omhoog/omlaag signaal"
+              },
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "No",
+                    "nl": "Nee"
+                  }
+                },
+                {
+                  "id": "180",
+                  "label": {
+                    "en": "Yes",
+                    "nl": "Ja"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "pair": [
+        {
+          "id": "rf.choice",
+          "options": {
+            "title": "rf.pair.choice.title.switch",
+            "body": "rf.pair.choice.body.switch",
+            "svgHeight": "65vh",
+            "choices": [
+              {
+                "name": "rf.pair.choice.buttons.copy.default",
+                "view": "rf.imitate",
+                "svg": "assets/svg/AYCT-102_pair.svg"
+              },
+              {
+                "name": "rf.pair.choice.buttons.generate.default",
+                "view": "rf.program",
+                "svg": "assets/svg/pair.svg"
+              }
+            ]
+          }
+        },
+        {
+          "id": "rf.imitate",
+          "options": {
+            "body": "rf.pair.imitate.body.blinds",
+            "svg": "assets/svg/AYCT-102_pair.svg"
+          },
+          "navigation": {
+            "prev": "rf.choice"
+          }
+        },
+        {
+          "id": "rf.test_blinds.2",
+          "navigation": {
+            "prev": "rf.imitate",
+            "next": "rf.done"
+          }
+        },
+        {
+          "id": "rf.program",
+          "options": {
+            "svg": "assets/svg/pair.svg"
+          },
+          "navigation": {
+            "prev": "rf.choice"
+          }
+        },
+        {
+          "id": "rf.test_blinds",
+          "navigation": {
+            "prev": "rf.program",
+            "next": "rf.done"
+          }
+        },
+        {
+          "id": "rf.done"
+        }
+      ],
       "name": {
         "en": "ScreenLine Remote",
         "nl": "ScreenLine Afstandsbediening"
@@ -141,88 +208,65 @@
       "class": "windowcoverings",
       "capabilities": [
         "windowcoverings_state",
+        "windowcoverings_tilt_set",
         "windowcoverings_tilt_up",
         "windowcoverings_tilt_down"
       ],
-      "images": {
-        "large": "./drivers/SL2392S159/assets/images/large.png",
-        "small": "./drivers/SL2392S159/assets/images/small.png"
-      },
       "rf": {
         "signal": "screenline"
       },
-      "settings": [],
-      "pair": [
-        {
-          "id": "imitate",
-          "rf_template": "imitate",
-          "navigation": {}
-        },
-        {
-          "id": "test_switch",
-          "rf_template": "test_switch",
-          "navigation": {
-            "prev": "imitate",
-            "next": "done"
-          }
-        },
-        {
-          "id": "done",
-          "rf_template": "done"
-        }
-      ]
+      "id": "SL2392S159"
     }
   ],
-  "mobile": {
-    "components": [
-      {
-        "id": "icon"
-      },
-      {
-        "id": "button",
-        "capabilities": [
-          "windowcoverings_tilt_up"
+  "signals": {
+    "433": {
+      "screenline": {
+        "sof": [
+          1012,
+          481,
+          328,
+          471,
+          338,
+          465,
+          343,
+          460,
+          348,
+          455,
+          353,
+          451,
+          356,
+          448,
+          361,
+          444,
+          361,
+          444,
+          361,
+          444,
+          362,
+          443,
+          363,
+          4467
         ],
-        "options": {
-          "icons": {
-            "windowcoverings_tilt_up": "/assets/icons/windowcoverings_tilt_up.svg"
-          }
-        }
-      },
-      {
-        "id": "button",
-        "capabilities": [
-          "windowcoverings_tilt_down"
+        "eof": [
+          359,
+          2784
         ],
-        "options": {
-          "icons": {
-            "windowcoverings_tilt_down": "/assets/icons/windowcoverings_tilt_down.svg"
-          }
-        }
-      },
-      {
-        "id": "ternary",
-        "capabilities": [
-          "windowcoverings_state"
-        ]
-      }
-    ]
-  },
-  "capabilitiesOptions": {
-    "windowcoverings_tilt_up": {
-      "title": {
-        "en": "Tilt up",
-        "nl": "Kantel omhoog"
-      }
-    },
-    "windowcoverings_tilt_down": {
-      "title": {
-        "en": "Tilt down",
-        "nl": "Kantel omlaag"
+        "words": [
+          [
+            398,
+            808
+          ],
+          [
+            768,
+            440
+          ]
+        ],
+        "interval": 10000,
+        "repetitions": 20,
+        "sensitivity": 0.5,
+        "minimalLength": 48,
+        "maximalLength": 48
       }
     }
-  },
-  "permissions": [
-    "homey:wireless:433"
-  ]
+  }
 }

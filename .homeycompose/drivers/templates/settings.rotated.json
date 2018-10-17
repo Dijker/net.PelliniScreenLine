@@ -1,0 +1,41 @@
+{
+    "settings": [
+        {
+            "type": "group",
+            "label": {
+                "en": "General settings",
+                "nl": "Algemene instellingen"
+            },
+            "children": [
+                {
+                    "id": "rotated",
+                    "type": "radio",
+                    "value": "0",
+                    "label": {
+                        "en": "Invert up/down signal",
+                        "nl": "Inverteer omhoog/omlaag signaal"
+                    },
+                    "values": [
+                        {
+                            "id": "0",
+                            "label": {
+                                "en": "No",
+                                "nl": "Nee"
+                            }
+                        },
+                        {
+                            "id": "180",
+                            "label": {
+                                "en": "Yes",
+                                "nl": "Ja"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "$_devices": [
+        "SL2392S159"
+    ]
+}
