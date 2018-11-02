@@ -59,8 +59,9 @@ module.exports = RFDriver => class SL2392S159 extends RFDriver {
 		console.log('dataToPayload: ');
 		console.log(JSON.stringify(data));
     if ( data && data.address.length === 18 ) {
-      const command = commandMap.get(data.command || data.windowcoverings_state);
-
+			//const command = commandMap.get(data.command || data.windowcoverings_state);
+			const command = commandMap.get(data.windowcoverings_state);
+			// windowcoverings_tilt_down or windowcoverings_tilt_up
 			if (command) {
         const address = util.bitStringToBitArray(data.address);
 				const channel = ("00000000000"+(+data.channel).toString(2)).slice(-11).split('').reverse();
