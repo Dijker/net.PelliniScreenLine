@@ -80,4 +80,19 @@ module.exports = RFDriver => class SL2392S159 extends RFDriver {
     }
     return null;
   }
+
+	/**
+	 * This function is called in this.send just after the send data is computed. This function can be used to add custom send options
+	 * depending on the data object that will be send. This could be a custom signal object or a custom amount of repetitions
+	 * @param {Object} data The data object that is to be send
+	 * @param {Object} options The current options object
+	 * @returns {Object} options The new Options object to be used to send the given data
+	 */
+	getSendOptionsForData(data, options) {
+		this.log( 'getSendOptionsForData' , JSON.stringify( data ), JSON.stringify(options) );
+		if (data.cmd.startsWith('tilt')) { // ????
+				return Object.assign(options, { repetitions: options.repetitions });
+			}
+		return options;
+	}
 };
