@@ -54,7 +54,7 @@
   "flow": {
     "actions": [
       {
-        "id": "{{driverId}}:tilt",
+        "id": "SL2392S159:tilt_set",
         "title": {
           "en": "tilt window covering",
           "nl": "kantel raambekleding"

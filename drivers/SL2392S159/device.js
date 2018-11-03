@@ -3,6 +3,8 @@
 const Homey = require('homey');
 const util = require('homey-rfdriver').util;
 
+
+
 // Helper function to turn a number into a bitString of 4 long
 const numberToCmdString = cmd => cmd.toString(2).padStart(4, '0');
 // The commands mapped to the corresponding bitString
@@ -60,7 +62,7 @@ module.exports = RFDriver => class SL2392S159 extends RFDriver {
 		console.log(JSON.stringify(data));
     if ( data && data.address.length === 18 ) {
 			//const command = commandMap.get(data.command || data.windowcoverings_state);
-			const command = commandMap.get(data.windowcoverings_state);
+			const command = commandMap.get(data.cmd || data.windowcoverings_state);
 			// windowcoverings_tilt_down or windowcoverings_tilt_up
 			if (command) {
         const address = util.bitStringToBitArray(data.address);
@@ -91,8 +93,22 @@ module.exports = RFDriver => class SL2392S159 extends RFDriver {
 	getSendOptionsForData(data, options) {
 		this.log( 'getSendOptionsForData' , JSON.stringify( data ), JSON.stringify(options) );
 		if (data.cmd.startsWith('tilt')) { // ????
-				return Object.assign(options, { repetitions: options.repetitions });
+				return Object.assign(options, { repetitions: data.repetitions });
 			}
 		return options;
+	}
+
+
+	// Trigger on tilt / windowcoverings_tilt
+	onWindowcoverings_tilt_set(args) {
+		console.log( 'device - windowcoverings_tilt_set'  );
+		console.log( JSON.stringify(args) ); // args "direction":"up","steps":4
+		// console.log(  JSON.stringify(state) );
+		// FlowCardAction
+		// args.device.setSceneSpeedDown()
+		// this.setCapabilityValue('windowcoverings_state', args.direction)
+		// return this.sendCmd(typeof args.cmd === 'object' ? args.cmd.cmd : args.cmd)
+    //return  this.sendCmd(args.direction);
+
 	}
 };
