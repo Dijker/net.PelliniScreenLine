@@ -3,7 +3,7 @@
   "version": "0.0.8",
   "compatibility": ">=1.5.0",
   "sdk": 2,
-  "brandColor": "#FF0000",
+  "brandColor": "##579E66",
   "name": {
     "en": "ScreenLine",
     "nl": "ScreenLine"
