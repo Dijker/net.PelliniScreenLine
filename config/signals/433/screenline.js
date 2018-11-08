@@ -1,5 +1,6 @@
 'use strict';
 
+// now see /.homeycompose!!!!!!!
 // This is the signal definition extracted from our remote
 
 module.exports = {
