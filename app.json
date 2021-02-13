@@ -14,6 +14,7 @@
     "nl": "Voeg ondersteuning voor ScreenLine Afstandsbediening toe"
   },
   "category": "climate",
+
   "tags": {
     "en": [
       "inBlindz",
@@ -147,6 +148,7 @@
   "signals": {
     "433": {
       "screenline": {
+
         "agc": [
           350,
           471,
@@ -194,5 +196,52 @@
         "maximalLength": 48
       }
     }
-  }
+
+  },
+  "flow": {},
+  "drivers": [
+    {
+      "id": "SL2392S159",
+      "name": {
+        "en": "ScreenLine Remote",
+        "nl": "ScreenLine Afstandsbediening"
+      },
+      "icon": "./drivers/SL2392S159/assets/blinds.svg",
+      "class": "windowcoverings",
+      "capabilities": [
+        "windowcoverings_state", "windowcoverings_tilt_up", "windowcoverings_tilt_down"
+      ],
+      "images": {
+        "large": "./drivers/SL2392S159/assets/images/large.png",
+        "small": "./drivers/SL2392S159/assets/images/small.png"
+      },
+      "rf": {
+        "signal": "screenline"
+      },
+      "settings": [],
+      "pair": [
+        {
+          "id": "imitate",
+          "rf_template": "imitate",
+          "navigation": {}
+        },
+        {
+          "id": "test_switch",
+          "rf_template": "test_switch",
+          "navigation": {
+            "prev": "imitate",
+            "next": "done"
+          }
+        },
+        {
+          "id": "done",
+          "rf_template": "done"
+        }
+      ]
+    }
+  ],
+  "permissions": [
+    "homey:wireless:433"
+  ]
 }
+
