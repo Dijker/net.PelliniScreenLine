@@ -21,7 +21,6 @@
   "$extends": [
     "defaults",
     "images.png",
-    "settings.rotated",
     "device.windowcoverings",
     "pair.windowcoverings"
 ]
