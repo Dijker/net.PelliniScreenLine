@@ -1,0 +1,42 @@
+{
+  "id": "net.pelliniscreenline",
+  "version": "0.0.8",
+  "compatibility": ">=1.5.0",
+  "sdk": 2,
+  "brandColor": "#579E66",
+  "name": {
+    "en": "ScreenLine",
+    "nl": "ScreenLine"
+  },
+  "description": {
+    "en": "Add support for ScreenLine Remote Control Blinds",
+    "nl": "Voeg ondersteuning voor ScreenLine Afstandsbediening toe"
+  },
+  "category": "climate",
+  "tags": {
+    "en": [ "inBlindz", "Screenline", "PelliniScreenLine", "ScreenLine", "StolkerGlas" ],
+    "nl": [ "inBlindz", "Screenline", "PelliniScreenLine", "ScreenLine", "StolkerGlas" ]
+  },
+  "images": {
+    "large": "/assets/images/large.png",
+    "small": "/assets/images/small.png"
+  },
+  "permissions": [
+    "homey:wireless:433"
+  ],
+  "author": {
+    "name": "Geurt Dijker"
+  },
+  "contributing": {
+    "donate": {
+      "paypal": {
+        "username": "Dijker"
+      }
+    }
+  },
+  "bugs": {
+    "url": "https://github.com/Dijker/net.PelliniScreenLine/issues"
+  },
+  "athomForumDiscussionId": 4399,
+  "homeyCommunityTopicId": 313
+}

@@ -3,6 +3,8 @@
 const Homey = require('homey');
 const util = require('homey-rfdriver').util;
 
+
+
 // Helper function to turn a number into a bitString of 4 long
 const numberToCmdString = cmd => cmd.toString(2).padStart(4, '0');
 // The commands mapped to the corresponding bitString
@@ -32,7 +34,7 @@ module.exports = RFDriver => class SL2392S159 extends RFDriver {
       cmd: stateMap.get(util.bitArrayToString(payload.slice(11, 15))),
 			cmdbit33: util.bitArrayToString(payload.slice(11, 15)).indexOf(payload[33]+'1'),
 			cmdbit45: util.bitArrayToString(payload.slice(11, 15)).indexOf(payload[45]+'1'),
-			payload: util.bitArrayToString(payload) // Temp Debug
+			// payload: util.bitArrayToString(payload) // Temp Debug
     };
 		if (data.cmdbit33 == '1') {data.cmdbit33 = 2};
 		if (data.cmdbit45 == '1') {data.cmdbit45 = 2};
@@ -47,20 +49,21 @@ module.exports = RFDriver => class SL2392S159 extends RFDriver {
 		  data.windowcoverings_state = data.cmd;
 	  }
 
-    // Set data.id to a unique value for this device. Since a remote has an address and 5 channels and each
+    // Set data.id to a unique value for this device. Since a remote has an address and multiple channels and each
     // channel can contain a different blind
     data.id = `${data.address}:${data.channel}`;
-    console.log(data.channel, data.cmd, data.cmdbit33, data.cmdbit45);
+    // console.log(data.channel, data.cmd, data.cmdbit33, data.cmdbit45);
     return data;
   }
 
   // for the screenline by Geurt Dijker
   static dataToPayload(data) { // Convert a data object to a bit array to be send
-		// console.log('dataToPayload: '); console.log(JSON.stringify(data)); console.log(data.address.length);
-		console.log(data.address.length );
+		console.log('dataToPayload: ');
+		console.log(JSON.stringify(data));
     if ( data && data.address.length === 18 ) {
-      const command = commandMap.get(data.command || data.windowcoverings_state);
-			// console.log( command );
+			//const command = commandMap.get(data.command || data.windowcoverings_state);
+			const command = commandMap.get(data.cmd || data.windowcoverings_state);
+			// windowcoverings_tilt_down or windowcoverings_tilt_up
 			if (command) {
         const address = util.bitStringToBitArray(data.address);
 				const channel = ("00000000000"+(+data.channel).toString(2)).slice(-11).split('').reverse();
@@ -79,4 +82,33 @@ module.exports = RFDriver => class SL2392S159 extends RFDriver {
     }
     return null;
   }
+
+	/**
+	 * This function is called in this.send just after the send data is computed. This function can be used to add custom send options
+	 * depending on the data object that will be send. This could be a custom signal object or a custom amount of repetitions
+	 * @param {Object} data The data object that is to be send
+	 * @param {Object} options The current options object
+	 * @returns {Object} options The new Options object to be used to send the given data
+	 */
+	getSendOptionsForData(data, options) {
+		this.log( 'getSendOptionsForData' , JSON.stringify( data ), JSON.stringify(options) );
+		if (data.cmd.startsWith('tilt')) { // ????
+				return Object.assign(options, { repetitions: data.repetitions });
+			}
+		return options;
+	}
+
+
+	// Trigger on tilt / windowcoverings_tilt
+	onWindowcoverings_tilt_set(args) {
+		console.log( 'device - windowcoverings_tilt_set'  );
+		console.log( JSON.stringify(args) ); // args "direction":"up","steps":4
+		// console.log(  JSON.stringify(state) );
+		// FlowCardAction
+		// args.device.setSceneSpeedDown()
+		// this.setCapabilityValue('windowcoverings_state', args.direction)
+		// return this.sendCmd(typeof args.cmd === 'object' ? args.cmd.cmd : args.cmd)
+    //return  this.sendCmd(args.direction);
+
+	}
 };

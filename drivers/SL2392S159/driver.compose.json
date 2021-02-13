@@ -1,0 +1,27 @@
+{
+  "name": {
+    "en": "ScreenLine Remote",
+    "nl": "ScreenLine Afstandsbediening"
+  },
+  "icon": "./drivers/SL2392S159/assets/blinds.svg",
+  "class": "windowcoverings",
+  "capabilities": [
+    "windowcoverings_state",
+    "windowcoverings_tilt_set",
+    "windowcoverings_tilt_up",
+    "windowcoverings_tilt_down"
+  ],
+  "images": {
+    "large": "./drivers/SL2392S159/assets/images/large.png",
+    "small": "./drivers/SL2392S159/assets/images/small.png"
+  },
+  "rf": {
+    "signal": "screenline"
+  },
+  "$extends": [
+    "defaults",
+    "images.png",
+    "device.windowcoverings",
+    "pair.windowcoverings"
+]
+}

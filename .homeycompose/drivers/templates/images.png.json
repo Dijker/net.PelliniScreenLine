@@ -1,0 +1,10 @@
+{
+    "images": {
+        "large": "{{driverPath}}/assets/images/large.png",
+        "small": "{{driverPath}}/assets/images/small.png"
+    },
+    "$_devices": [
+        "SL2392S159"
+    ],
+    "$_hash": "migrate.6.0aa53b09543a731c75c70d20127d66dc"
+}

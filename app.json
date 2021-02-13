@@ -1,41 +1,156 @@
 {
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "net.pelliniscreenline",
+  "version": "0.0.8",
+  "compatibility": ">=1.5.0",
   "sdk": 2,
+  "brandColor": "#579E66",
   "name": {
-    "en": "ScreenLine Remote",
-    "nl": "ScreenLine Afstandsbediening"
+    "en": "ScreenLine",
+    "nl": "ScreenLine"
   },
   "description": {
     "en": "Add support for ScreenLine Remote Control Blinds",
-    "nl": "voeg ondersteuning voor ScreenLine Afstandsbediening toe"
+    "nl": "Voeg ondersteuning voor ScreenLine Afstandsbediening toe"
   },
   "category": "climate",
-  "version": "0.0.7",
-  "compatibility": ">=1.5.0",
+
+  "tags": {
+    "en": [
+      "inBlindz",
+      "Screenline",
+      "PelliniScreenLine",
+      "ScreenLine",
+      "StolkerGlas"
+    ],
+    "nl": [
+      "inBlindz",
+      "Screenline",
+      "PelliniScreenLine",
+      "ScreenLine",
+      "StolkerGlas"
+    ]
+  },
+  "images": {
+    "large": "/assets/images/large.png",
+    "small": "/assets/images/small.png"
+  },
+  "permissions": [
+    "homey:wireless:433"
+  ],
   "author": {
     "name": "Geurt Dijker"
   },
   "contributing": {
     "donate": {
-        "paypal": {
-            "username": "Dijker"
-        }
+      "paypal": {
+        "username": "Dijker"
+      }
     }
   },
   "bugs": {
-      "url": "https://github.com/Dijker/net.PelliniScreenLine/issues"
+    "url": "https://github.com/Dijker/net.PelliniScreenLine/issues"
   },
   "athomForumDiscussionId": 4399,
-  "images": {
-      "large": "/assets/images/large.png",
-      "small": "/assets/images/small.png"
+  "homeyCommunityTopicId": 313,
+  "flow": {
+    "actions": [
+      {
+        "id": "SL2392S159:tilt_set",
+        "title": {
+          "en": "tilt window covering",
+          "nl": "kantel raambekleding"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=SL2392S159&capabilities=windowcoverings_tilt_up"
+          },
+          {
+            "name": "direction",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "up",
+                "label": {
+                  "en": "up",
+                  "nl": "omhoog"
+                }
+              },
+              {
+                "id": "down",
+                "label": {
+                  "en": "down",
+                  "nl": "omlaag"
+                }
+              }
+            ]
+          },
+          {
+            "name": "steps",
+            "type": "number",
+            "min": 1,
+            "max": 40,
+            "step": 1,
+            "placeholder": {
+              "en": "Amount of steps",
+              "nl": "Aantal stappen"
+            }
+          }
+        ]
+      }
+    ]
   },
+  "drivers": [
+    {
+      "images": {
+        "large": "./drivers/SL2392S159/assets/images/large.png",
+        "small": "./drivers/SL2392S159/assets/images/small.png"
+      },
+      "pair": [
+        {
+          "id": "rf.imitate",
+          "options": {
+            "body": "rf.pair.imitate.body.blinds",
+            "svg": "assets/remote.svg"
+          }
+        },
+        {
+          "id": "rf.test_blinds.2",
+          "navigation": {
+            "prev": "rf.imitate",
+            "next": "rf.done"
+          }
+        },
+        {
+          "id": "rf.done"
+        }
+      ],
+      "name": {
+        "en": "ScreenLine Remote",
+        "nl": "ScreenLine Afstandsbediening"
+      },
+      "icon": "./drivers/SL2392S159/assets/blinds.svg",
+      "class": "windowcoverings",
+      "capabilities": [
+        "windowcoverings_state",
+        "windowcoverings_tilt_set",
+        "windowcoverings_tilt_up",
+        "windowcoverings_tilt_down"
+      ],
+      "rf": {
+        "signal": "screenline"
+      },
+      "id": "SL2392S159"
+    }
+  ],
   "signals": {
     "433": {
       "screenline": {
-        "PrefixData": [
-          481,
-          328,
+
+        "agc": [
+          350,
           471,
           338,
           465,
@@ -54,16 +169,15 @@
           361,
           444,
           362,
-          443,
-          363
+          443
         ],
         "sof": [
-
-          350,
+          363,
           4467
         ],
         "eof": [
-          359
+          359,
+          13646
         ],
         "words": [
           [
@@ -82,6 +196,7 @@
         "maximalLength": 48
       }
     }
+
   },
   "flow": {},
   "drivers": [
@@ -129,3 +244,4 @@
     "homey:wireless:433"
   ]
 }
+

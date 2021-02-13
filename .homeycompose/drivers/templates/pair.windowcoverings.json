@@ -1,0 +1,24 @@
+{
+	"pair": [
+		{
+			"id": "rf.imitate",
+			"$template": "rf.imitate",
+			"options": {
+				"body": "rf.pair.imitate.body.blinds",
+				"svg": "assets/remote.svg"
+			}
+		},
+		{
+			"id": "rf.test_blinds.2",
+			"$template": "rf.test_blinds",
+			"navigation": {
+				"prev": "rf.imitate",
+				"next": "rf.done"
+			}
+		},
+		{
+			"id": "rf.done",
+			"$template": "rf.done"
+		}
+	]
+}
