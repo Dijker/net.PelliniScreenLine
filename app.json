@@ -10,7 +10,7 @@
     "nl": "voeg ondersteuning voor ScreenLine Afstandsbediening toe"
   },
   "category": "climate",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "compatibility": ">=1.5.0",
   "author": {
     "name": "Geurt Dijker"
@@ -33,8 +33,7 @@
   "signals": {
     "433": {
       "screenline": {
-        "sof": [
-          1012,
+        "PrefixData": [
           481,
           328,
           471,
@@ -56,12 +55,15 @@
           444,
           362,
           443,
-          363,
+          363
+        ],
+        "sof": [
+
+          350,
           4467
         ],
         "eof": [
-          359,
-          2784
+          359
         ],
         "words": [
           [
@@ -92,7 +94,7 @@
       "icon": "./drivers/SL2392S159/assets/blinds.svg",
       "class": "windowcoverings",
       "capabilities": [
-        "windowcoverings_state"
+        "windowcoverings_state", "windowcoverings_tilt_up", "windowcoverings_tilt_down"
       ],
       "images": {
         "large": "./drivers/SL2392S159/assets/images/large.png",
